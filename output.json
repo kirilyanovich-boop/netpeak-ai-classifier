@@ -1,0 +1,242 @@
+{
+  "processed_at": "2026-06-15T13:36:50.082173+00:00",
+  "total": 18,
+  "successful": 16,
+  "failed": 2,
+  "results": [
+    {
+      "id": "REQ-002",
+      "category": "автоматизація",
+      "target_department": null,
+      "priority": "medium",
+      "short_summary": "Запит на створення бота без надання конкретних вимог чи деталей.",
+      "requested_actions": [
+        "Розробити бот"
+      ],
+      "needs_clarification": true,
+      "confidence": 9,
+      "is_likely_duplicate": false
+    },
+    {
+      "id": "REQ-003",
+      "category": "автоматизація",
+      "target_department": "продажі",
+      "priority": "medium",
+      "short_summary": "Автоматичне створення короткого саммарі та списку домовленостей з транскриптів дзвінків та їх інтеграція з PlanFix.",
+      "requested_actions": [
+        "Налаштувати автоматичне генерування саммарі та домовленостей з транскриптів дзвінків",
+        "Інтегрувати передачу згенерованих даних до PlanFix у картку угоди",
+        "Надати оцінку можливості реалізації такого рішення"
+      ],
+      "needs_clarification": false,
+      "confidence": 9,
+      "is_likely_duplicate": false
+    },
+    {
+      "id": "REQ-004",
+      "category": "питання/консультація",
+      "target_department": "маркетинг",
+      "priority": "low",
+      "short_summary": "Запит на консультацію щодо можливості використання AI для оцінки якості статей у блозі перед публікацією.",
+      "requested_actions": [
+        "Надати експертну думку щодо можливості оцінки якості контенту за допомогою AI"
+      ],
+      "needs_clarification": false,
+      "confidence": 10,
+      "is_likely_duplicate": false
+    },
+    {
+      "id": "REQ-005",
+      "category": "звіт/аналітика",
+      "target_department": "бухгалтерія",
+      "priority": "high",
+      "short_summary": "Терміново вивантажити список усіх контрагентів з витратами понад 50 тисяч за травень для бухгалтерії.",
+      "requested_actions": [
+        "вивантажити список усіх контрагентів з витратами понад 50к за травень"
+      ],
+      "needs_clarification": false,
+      "confidence": 9,
+      "is_likely_duplicate": false
+    },
+    {
+      "id": "REQ-006",
+      "category": "автоматизація",
+      "target_department": "аналітика",
+      "priority": "medium",
+      "short_summary": "Розробка сервісу для автоматичної генерації текстових звітів у Google Docs на основі тижневого експорту аналітики з BigQuery.",
+      "requested_actions": [
+        "налаштувати отримання тижневого експорту аналітики з BigQuery",
+        "реалізувати автоматичне створення текстового резюме (summary) ключових змін тиждень до тижня",
+        "налаштувати вивантаження згенерованого тексту в Google Doc"
+      ],
+      "needs_clarification": false,
+      "confidence": 9,
+      "is_likely_duplicate": false
+    },
+    {
+      "id": "REQ-007",
+      "category": "баг/підтримка",
+      "target_department": "бухгалтерія",
+      "priority": "high",
+      "short_summary": "Не працює автоматичний парсинг інвойсів з Meta, через що зависли рахунки.",
+      "requested_actions": [
+        "Полагодити автоматизацію парсингу інвойсів з Meta",
+        "З'ясувати автора розробки автоматизації"
+      ],
+      "needs_clarification": false,
+      "confidence": 10,
+      "is_likely_duplicate": false
+    },
+    {
+      "id": "REQ-009",
+      "category": "автоматизація",
+      "target_department": "HR",
+      "priority": "medium",
+      "short_summary": "Автоматизація первинного скринінгу та структурування даних з PDF-резюме для HR-відділу.",
+      "requested_actions": [
+        "Розробити рішення для парсингу PDF-резюме",
+        "Налаштувати структурування даних про досвід, стек та відповідність вимогам",
+        "Реалізувати автоматичне формування короткої оцінки кандидата"
+      ],
+      "needs_clarification": false,
+      "confidence": 10,
+      "is_likely_duplicate": false
+    },
+    {
+      "id": "REQ-010",
+      "category": "автоматизація",
+      "target_department": "маркетинг",
+      "priority": "medium",
+      "short_summary": "Автоматизувати збір згадок про Netpeak у Telegram-каналах з щоденним дайджестом та сповіщеннями про негативні згадки.",
+      "requested_actions": [
+        "Автоматизувати збір згадок про Netpeak у телеграм-каналах",
+        "Створити щоденний дайджест згадок",
+        "Налаштувати алерт для негативних згадок"
+      ],
+      "needs_clarification": false,
+      "confidence": 9,
+      "is_likely_duplicate": false
+    },
+    {
+      "id": "REQ-011",
+      "category": "звіт/аналітика",
+      "target_department": null,
+      "priority": "low",
+      "short_summary": "Запит на створення невизначеної таблиці.",
+      "requested_actions": [
+        "створити таблицю"
+      ],
+      "needs_clarification": true,
+      "confidence": 9,
+      "is_likely_duplicate": false
+    },
+    {
+      "id": "REQ-012",
+      "category": "поза скоупом",
+      "target_department": "SMM",
+      "priority": "low",
+      "short_summary": "Запит про те, куди подати заявку на закупівлю ноутбука для SMM-відділу.",
+      "requested_actions": [
+        "Надати інформацію щодо процесу подачі заявки на закупівлю техніки"
+      ],
+      "needs_clarification": false,
+      "confidence": 10,
+      "is_likely_duplicate": false
+    },
+    {
+      "id": "REQ-013",
+      "category": "звіт/аналітика",
+      "target_department": "маркетинг",
+      "priority": "medium",
+      "short_summary": "Запит на підключення користувача до отримання звіту по Google Ads, який раніше замовляла його колега.",
+      "requested_actions": [
+        "Налаштувати надсилання або надати доступ до звіту по Google Ads для автора запиту, аналогічно до налаштувань для Олі"
+      ],
+      "needs_clarification": false,
+      "confidence": 9,
+      "is_likely_duplicate": false
+    },
+    {
+      "id": "REQ-014",
+      "category": "питання/консультація",
+      "target_department": null,
+      "priority": "low",
+      "short_summary": "Пропозиція ознайомитися зі стороннім інструментом для оцінки можливості розробки аналогічного рішення.",
+      "requested_actions": [
+        "ознайомитися з інструментом за посиланням",
+        "оцінити можливість створення схожого рішення"
+      ],
+      "needs_clarification": true,
+      "confidence": 9,
+      "is_likely_duplicate": false
+    },
+    {
+      "id": "REQ-015",
+      "category": "автоматизація",
+      "target_department": "SMM",
+      "priority": "medium",
+      "short_summary": "Створення інструменту для автоматичного генерування коротких постів для соцмереж із довгих текстів інтерв'ю відповідно до tone of voice компанії.",
+      "requested_actions": [
+        "Розробити інструмент для генерації 5 коротких постів на основі тексту інтерв'ю (10-15 сторінок)",
+        "Налаштувати генерацію з урахуванням корпоративного tone of voice"
+      ],
+      "needs_clarification": false,
+      "confidence": 10,
+      "is_likely_duplicate": false
+    },
+    {
+      "id": "REQ-016",
+      "category": "питання/консультація",
+      "target_department": null,
+      "priority": "low",
+      "short_summary": "Запит про те, чи є періодичні нерелевантні відповіді асистента по базі знань багом чи нормою.",
+      "requested_actions": [
+        "Надати роз'яснення щодо причин нерелевантних відповідей асистента"
+      ],
+      "needs_clarification": false,
+      "confidence": 9,
+      "is_likely_duplicate": false
+    },
+    {
+      "id": "REQ-017",
+      "category": "інтеграція",
+      "target_department": "підтримка",
+      "priority": "high",
+      "short_summary": "Інтеграція Slack із Planfix для автоматичного створення тікетів з каналу #support.",
+      "requested_actions": [
+        "налаштувати інтеграцію Slack та Planfix",
+        "автоматизувати створення тікетів у Planfix із повідомлень у каналі #support"
+      ],
+      "needs_clarification": false,
+      "confidence": 10,
+      "is_likely_duplicate": false
+    },
+    {
+      "id": "REQ-018",
+      "category": "звіт/аналітика",
+      "target_department": "аналітика",
+      "priority": "medium",
+      "short_summary": "Створення дашборду для моніторингу аномалій у витратах по підрядниках на основі даних з BigQuery із генерацією пояснень природною мовою.",
+      "requested_actions": [
+        "налаштувати щоденне імпортування даних з BigQuery",
+        "розробити дашборд для відображення витрат та аномальних стрибків",
+        "інтегрувати генерацію пояснень природною мовою для виявлених аномалій"
+      ],
+      "needs_clarification": false,
+      "confidence": 10,
+      "is_likely_duplicate": false
+    }
+  ],
+  "errors": [
+    {
+      "id": "REQ-001",
+      "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'The service is currently unavailable.', 'status': 'UNAVAILABLE'}}",
+      "raw_response": ""
+    },
+    {
+      "id": "REQ-008",
+      "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+      "raw_response": ""
+    }
+  ]
+}
