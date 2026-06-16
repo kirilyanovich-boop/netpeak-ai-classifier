@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 
 from classifier import build_client, classify_request_async, CONCURRENCY, MIN_SLOT_SECONDS
 from models import RequestClassification, ProcessingError
+from telegram_notify import send_digest
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
@@ -133,6 +134,8 @@ async def main() -> None:
     report = build_report(results, errors)
     OUTPUT_REPORT.write_text(report, encoding="utf-8")
     logger.info("Збережено %s", OUTPUT_REPORT)
+
+    await send_digest(results, errors)
 
     logger.info(
         "Готово: %d успішно, %d помилок", len(results), len(errors)
