@@ -1,13 +1,13 @@
+import asyncio
 import csv
 import json
 import logging
-import time
 from datetime import datetime, timezone
 from pathlib import Path
 
 from dotenv import load_dotenv
 
-from classifier import build_client, classify_request, SLEEP_BETWEEN_REQUESTS
+from classifier import build_client, classify_request_async, CONCURRENCY, MIN_SLOT_SECONDS
 from models import RequestClassification, ProcessingError
 
 load_dotenv()
@@ -105,28 +105,24 @@ def build_report(
     return "\n".join(lines)
 
 
-def main() -> None:
+async def main() -> None:
     rows = read_requests(INPUT_CSV)
     logger.info("Завантажено %d запитів", len(rows))
 
     client = build_client()
-    results: list[RequestClassification] = []
-    errors: list[ProcessingError] = []
+    semaphore = asyncio.Semaphore(CONCURRENCY)
+    tasks = [
+        classify_request_async(client, row["id"], row["raw_text"], semaphore)
+        for row in rows
+    ]
+    logger.info(
+        "Запускаю %d задач асинхронно (паралельність: %d, очікуваний час: ~%ds)",
+        len(tasks), CONCURRENCY, int(len(tasks) / CONCURRENCY * MIN_SLOT_SECONDS),
+    )
+    outcomes = await asyncio.gather(*tasks)
 
-    for i, row in enumerate(rows):
-        request_id = row["id"]
-        raw_text = row["raw_text"]
-        logger.info("[%d/%d] Обробляю %s", i + 1, len(rows), request_id)
-
-        outcome = classify_request(client, request_id, raw_text)
-
-        if isinstance(outcome, RequestClassification):
-            results.append(outcome)
-        else:
-            errors.append(outcome)
-
-        if i < len(rows) - 1:
-            time.sleep(SLEEP_BETWEEN_REQUESTS)
+    results = [o for o in outcomes if isinstance(o, RequestClassification)]
+    errors  = [o for o in outcomes if isinstance(o, ProcessingError)]
 
     output = build_output(results, errors)
     OUTPUT_JSON.write_text(
@@ -144,4 +140,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

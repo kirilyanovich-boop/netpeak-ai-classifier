@@ -38,9 +38,9 @@ python main.py
 
 **Невалідний вивід LLM.** Використовується нативний structured output Gemini (`response_mime_type=application/json` + `response_json_schema`), тому модель змушена повертати валідний JSON. Якщо Pydantic-валідація все ж падає — один retry. Після другого фейлу запит записується у `errors` і скрипт іде далі, не падаючи.
 
-**Мережеві та API-помилки** (quota, auth, timeout) відловлюються окремо і не ретраяться — одразу `ProcessingError`. Quota-помилка на безкоштовному тірі означає, що треба почекати і запустити знову.
+**Мережеві та API-помилки** розрізняються за типом: тимчасові (503, 429, timeout) ретраяться до 2 разів з паузою 5с; постійні (401, 400) одразу йдуть у `ProcessingError`. Два retry покривають реальні спайки 503 при паралельному навантаженні.
 
-**Rate limit.** Free tier Gemini — ~15 RPM. Між запитами `sleep(4s)`. На 18 запитів — ~2 хвилини.
+**Rate limit.** Документація Gemini вказує 15 RPM для free tier, але при тестуванні реальна квота виявилась 5 RPM (`GenerateRequestsPerMinutePerProjectPerModel-FreeTier`). Async-версія працює з `CONCURRENCY=1` і мінімальним слотом 12с (60/5×1), щоб надійно вкластись у 5 RPM. Час обробки 18 запитів — ~156с. Async-інфраструктура (gather, semaphore, retry) залишається: на платному тірі достатньо підняти `CONCURRENCY` у `classifier.py` без будь-яких змін у коді.
 
 **Недетермінізм.** Однаковий запит може дати різну класифікацію при перезапуску. Поле `confidence` допомагає виявити невпевнені результати. Для стабільності можна виставити `temperature=0` в `GenerateContentConfig`.
 
@@ -55,7 +55,7 @@ python main.py
 ## Що зробив би далі
 
 - `temperature=0` в конфіг для відтворюваних результатів
-- async-обробка (`asyncio` + `client.aio.models.generate_content`) для паралельних запитів
+- async-обробка реалізована: `asyncio.gather` + `Semaphore(1)` + slot-throttling по Little's Law; при переході на платний тір — підняти `CONCURRENCY` у `classifier.py`, все інше без змін
 - запис результату в Google Sheets через `gspread`
 - Telegram-дайджест через Bot API
 - тести на edge-cases (REQ-002/REQ-011 → needs_clarification, REQ-012 → поза скоупом)
